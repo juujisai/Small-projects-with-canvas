@@ -1,26 +1,78 @@
 window.addEventListener('load', () => {
 
+
+
   const canvas = document.getElementById('canvas');
 
-
-  const canv = new Canvas(canvas)
-
-  canv.init(300, 300)
-
-  // canv.setContext('2d')
-  const ctx = canv.setContext('2d')
+  const buttonStart = document.getElementById('start')
+  const PIcont = document.getElementById('pi')
 
 
 
-  canv.beginPath
+  const frames = 30
+  const width = 300
+  const height = 300
+
+  let count = 0
+  let inCircle = 0
+  let pi = 0
+
+  const startFunction = () => {
+
+
+    const canv = new Canvas(canvas)
+
+    canv.init(width, height)
+
+    const ctx = canv.setContext('2d')
+
+    canv.beginPath
+
+    canv.drawCircle(width / 2, height / 2, width / 2, '', 'red')
 
 
 
-  canv.drawRect(50, 50, 50, 50, '', 'red')
+    PIcont.textContent = pi
 
 
-  canv.drawPoint(150, 150, 'red')
+    const calculatePi = () => {
+      let xRand = Math.floor(Math.random() * width)
+      let yRand = Math.floor(Math.random() * height)
 
+      xRand === 0 ? xRand++ : xRand
+      yRand === 0 ? yRand++ : yRand
+
+
+      let xDelta = width / 2 - xRand
+      let yDelta = height / 2 - yRand
+
+      let distance = Math.sqrt(xDelta * xDelta + yDelta * yDelta)
+
+      count++;
+
+      if (distance < width / 2) {
+        canv.drawPoint(xRand, yRand, 'red')
+
+        inCircle++
+      } else {
+        canv.drawPoint(xRand, yRand, 'blue')
+
+      }
+
+
+
+
+      pi = 4 * (inCircle / count)
+
+      PIcont.textContent = pi
+    }
+
+
+    canv.render(calculatePi, frames)
+
+  }
+
+  buttonStart.addEventListener('click', startFunction)
 
 })
 

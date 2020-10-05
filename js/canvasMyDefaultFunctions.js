@@ -30,6 +30,8 @@ class Canvas {
   }
 
   drawLine = (x1, y1, x2, y2, color = 'black', width = 2) => {
+    this.ctx.beginPath()
+
     this.ctx.strokeStyle = color
     this.ctx.lineWidth = width
     this.ctx.moveTo(x1, y1)
@@ -38,6 +40,8 @@ class Canvas {
   }
 
   drawRect = (x1, y1, w, h, fill = 'black', stroke = 'black', width = 2) => {
+    this.ctx.beginPath()
+
     this.ctx.strokeStyle = stroke
     this.ctx.fillStyle = fill
 
@@ -49,6 +53,8 @@ class Canvas {
   }
 
   drawCircle = (x1, y1, r, fill = 'black', stroke = 'black', width = 2) => {
+    this.ctx.beginPath()
+
     this.ctx.strokeStyle = stroke
     this.ctx.fillStyle = fill
 
@@ -61,13 +67,33 @@ class Canvas {
   }
 
   drawPoint = (x1, y1, fill = 'black') => {
+    this.ctx.beginPath()
+
     this.ctx.fillStyle = fill
 
+    // this.ctx.lineWidth = 2
 
 
     this.ctx.arc(x1, y1, 2, 0, Math.PI * 2, true)
 
     this.ctx.fill()
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  render = (f, frames) => {
+    const id = setInterval(f, 1000 / frames)
+    return id
   }
 
 }
