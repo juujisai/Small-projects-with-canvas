@@ -42,7 +42,7 @@ const project1 = (currentProjectId) => {
 
 
 
-    const frames = 60
+    const frames = 120
     const width = 300
     const height = 300
 

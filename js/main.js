@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
 
   const nav = document.querySelector('.nav')
 
-  const navProjects = ['Approximating the value of PI - Monte Carlo']
+  const navProjects = ['Approximating the value of PI - Monte Carlo', 'Calculating PI with Collisions']
   let navButtons = []
 
   navProjects.map(item => {
@@ -23,8 +23,13 @@ window.addEventListener('load', () => {
     projectName.textContent = this.textContent
     currentProjectId = navProjects.findIndex(item => item === this.textContent)
 
+    if (currentProjectId === 0) {
+      project1(currentProjectId)
+    } else if (currentProjectId === 1) {
+      project2(currentProjectId)
+    }
 
-    project1(currentProjectId)
+
   }))
 
 })
